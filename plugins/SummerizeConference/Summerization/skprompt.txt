@@ -1,0 +1,12 @@
+## Task Goal
+    Quiero que me hagas un resumen de la conferencia del vocero presidencial Manuel Adorni.
+## Task instructions
+    1. Hace un resumen del discurso inicial del vocero Manuel adorni con la estructura:
+        RESUMEN DEL DISCURSO INICIAL:
+        resumen del discurso
+    2. Por cada una de las preguntas que le hagan detallar quien hace la pregunta y que pregunta.
+    3. Por cada respuesta del vocero a una pregunta, hacer un resumen de ella luego de la pregunta
+    4. En caso de haber re pregunta, volver a decir el nombre de la persona que repregunta y lo que re pregunto, seguido del resumen de la respuesta del vocero 
+## Task Input:
+    CONFERENCIA:"{{$conferencia}}"
+## Task Output:
