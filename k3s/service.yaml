@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: megavoceroapi-service
+spec:
+  selector:
+    app: megavoceroapi
+  ports:
+    - protocol: TCP
+      port: 80  # Puerto expuesto en el servicio
+      targetPort: 8000  # Puerto donde tu aplicación escucha en el contenedor
+  type: LoadBalancer  # Permite acceso externo al servicio

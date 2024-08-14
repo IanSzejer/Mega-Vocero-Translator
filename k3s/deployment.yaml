@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: megavoceroapi-deployment
+  labels:
+    app: megavoceroapi
+spec:
+  selector:
+    matchLabels:
+      app: megavoceroapi
+  template:
+    metadata:
+      labels:
+        app: megavoceroapi
+    spec:
+      containers:
+      - name: megavoceroapi-container
+        image: gcr.io/sound-chimera-430722-m4/megavoceroapi:1.2  # Imagen de Docker que quieres desplegar
+        ports:
+        - containerPort: 8000  # Puerto en el que tu aplicación escucha
