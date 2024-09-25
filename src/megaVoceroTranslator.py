@@ -11,6 +11,7 @@ import io
 import requests
 import asyncio
 import time
+import uuid
 import subprocess
 import soundfile as sf
 import numpy as np
@@ -26,7 +27,7 @@ from logger import logger
 CHANNEL_ID = 'UCCSbOixo2xpZc_oToqeq2jQ'
 PLAYLIST_ID = 'PLnpld8uKYZVpXU628alq6Ib5Ubi1rzRRa'
 OUTPUT_FILE = "/tmp"
-FINAL_AUDIO_FILE = "/tmp/final_audio.wav"
+FINAL_AUDIO_FILE = "final_audio.wav"
 EXPECTED_AUDIO_ROUTE = "tmp\Conferencia.wav"
 CLIENT_FILE = config.GOOGLE_SPEECH_CLIENT
 
@@ -199,7 +200,9 @@ async def run():
         return JSONResponse(status_code=500, content="This HTTP triggered function failed. The last video in channel is not from today."), False
 
     #latest_video_id = "4QGUNAKU7uM"     #HARDCODEO EL VIDEO ID POR PRUEBAS MAS CORTAS
-    audio_file = download_audio_from_video_v2(latest_video_id,OUTPUT_FILE,FINAL_AUDIO_FILE)
+    new_uuid = str(uuid.uuid4())
+    dailty_output_file = OUTPUT_FILE + "/" + new_uuid + FINAL_AUDIO_FILE
+    audio_file = download_audio_from_video_v2(latest_video_id,OUTPUT_FILE,dailty_output_file)
     #audio_file = os.path.join('D:\Proyectos\Manu\Mega-Vocero-Adorni-Api-V\\tmp','audio_prueba.wav') 
     if not audio_file:
         return JSONResponse(status_code=500, content="This HTTP triggered function failed. The last video could not be downloaded."), False
